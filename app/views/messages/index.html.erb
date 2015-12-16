@@ -1,0 +1,19 @@
+<h1 align='right'> Chat </h1>
+<div class='row chat-container'>
+  <div class='row window-message'>
+    <div class="col-md-12 all-messages">
+      <% @messages.each do |message| %>
+        <%= render 'message', message: message %>
+      <% end %>
+    </div>
+  </div>
+  <div class='row inputs'>
+    <div class="col-md-12">
+      <%= form_for :message, remote: true do |f| %>
+        <div class="col-md-9"> <%= f.text_area :body, placeholder: 'Enter your message here', rows: 2, cols: 120 %> </div>
+        <div class="col-md-3 button-field"> <%= f.button :send_message %> </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= subscribe_to "/messages/new" %>

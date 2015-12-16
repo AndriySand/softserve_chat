@@ -1,0 +1,5 @@
+<% publish_to "/messages/new" do %>
+  $( "div.last" ).after( "<%= j(render 'message', message: @message) %>" );
+  $('div.message').removeClass('last');
+  add_class();
+<% end %>
